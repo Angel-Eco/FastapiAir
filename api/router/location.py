@@ -1,3 +1,4 @@
+import json
 from fastapi import APIRouter
 from fastapi import FastAPI, Depends, HTTPException
 #from schema import LocationUpdate
@@ -32,3 +33,8 @@ async def get_location_updates(params: LocationUpdateSchema = Depends()):
     }
 
     return response
+
+@router.get("/repuesta/")
+async def ejemplo():
+    with open("location.json","r",encoding="utf-8") as file_object:
+        return json.load(file_object)
